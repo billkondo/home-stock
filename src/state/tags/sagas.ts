@@ -1,4 +1,5 @@
 import { takeEvery, delay, all, put } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
 import {
   TAGS_CREATE_REQUEST,
@@ -6,6 +7,8 @@ import {
   TAGS_CREATE,
   TagsCreateAction
 } from './types';
+
+import { routes } from '../../config/routes';
 
 function* tagsCreateRequest(action: TagsCreateRequestAction) {
   console.log(action);
@@ -15,6 +18,8 @@ function* tagsCreateRequest(action: TagsCreateRequestAction) {
       type: TAGS_CREATE,
       tag: action.tag
     });
+
+    yield put(push(routes.management('tags')));
   } catch (e) {
     console.log(e);
   }

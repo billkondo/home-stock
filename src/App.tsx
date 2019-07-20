@@ -1,7 +1,8 @@
 import React from 'react';
 import { CssBaseline, Grid, Box } from '@material-ui/core';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
 import Navbar from './components/navbar/Navbar';
 import Index from './pages/index';
@@ -10,15 +11,15 @@ import Management from './pages/management';
 import AddTag from './pages/add_tag';
 
 import { routes } from './config/routes';
-import { store } from './state/store';
+import { store, history } from './state/store';
 
 const App: React.FC = () => {
   return (
     <div>
       <Provider store={store}>
-        <CssBaseline />
+        <ConnectedRouter history={history}>
+          <CssBaseline />
 
-        <BrowserRouter>
           <Grid container direction="column">
             <Grid item>
               <Navbar />
@@ -37,7 +38,7 @@ const App: React.FC = () => {
               </Grid>
             </Box>
           </Grid>
-        </BrowserRouter>
+        </ConnectedRouter>
       </Provider>
     </div>
   );
