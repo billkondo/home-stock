@@ -4,7 +4,7 @@ import { Grid, Typography } from '@material-ui/core';
 
 import { AppState } from '../../../../state/store';
 import { Tag } from '../../../../state/tags/types';
-import TagCard from './TagCard';
+import TagCard from './card/TagCard';
 
 interface StateFromProps {
   tagsList: Tag[];
@@ -20,7 +20,7 @@ const List: React.FC<StateFromProps> = ({ tagsList }) => {
       </Grid>
 
       <Grid item>
-        <Grid container spacing={5}>
+        <Grid container spacing={8}>
           {tagsList.map(tag => {
             return (
               <Grid item key={tag.name} xs={12} md={6}>

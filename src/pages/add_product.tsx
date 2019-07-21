@@ -9,7 +9,7 @@ import Create from '../components/management/products/Create';
 const AddProduct = () => {
   return (
     <Grid container justify="center">
-      <Grid item md={6} xs={10}>
+      <Grid item md={8} xs={10}>
         <Grid container direction="column" spacing={10}>
           <Grid item>
             <Typography variant="h3" style={{ fontFamily: 'Permanent Marker' }}>

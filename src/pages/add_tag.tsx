@@ -8,7 +8,7 @@ import Create from '../components/management/tags/create/Create';
 const AddTag = () => {
   return (
     <Grid container justify="center">
-      <Grid item xs={10} md={6}>
+      <Grid item xs={10} md={8}>
         <Grid container direction="column" spacing={10}>
           <Grid item>
             <Typography variant="h3" style={{ fontFamily: 'Permanent Marker' }}>

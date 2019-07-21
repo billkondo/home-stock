@@ -53,7 +53,7 @@ const Management: React.FC<Props> = ({ match, history }) => {
 
   return (
     <Grid container justify="center">
-      <Grid item md={6} xs={10}>
+      <Grid item md={8} xs={10}>
         <Grid container direction="column">
           <Grid item>
             <Tabs value={state.tab} onChange={handleChange}>

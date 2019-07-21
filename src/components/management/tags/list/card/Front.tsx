@@ -1,18 +1,18 @@
 import React from 'react';
 import { Card, Grid, Typography, InputBase } from '@material-ui/core';
 
-import { Tag } from '../../../../state/tags/types';
+import { Tag } from '../../../../../state/tags/types';
 
-type Props = {
+interface Props {
   tag: Tag;
-};
+}
 
-const TagCard: React.FC<Props> = ({ tag }) => {
+const Front: React.FC<Props> = ({ tag }) => {
   return (
-    <Card style={{ padding: 32 }} elevation={4}>
+    <Card elevation={4} style={{ padding: 32, height: 250 }}>
       <Grid container direction="column" spacing={3}>
         <Grid item>
-          <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+          <Typography variant="h6" style={{ fontWeight: 'bold' }} align="left">
             {tag.name}
           </Typography>
         </Grid>
@@ -21,8 +21,8 @@ const TagCard: React.FC<Props> = ({ tag }) => {
           <InputBase
             value={tag.description}
             multiline
-            inputProps={{ readOnly: true }}
             fullWidth
+            inputProps={{ readOnly: true }}
           />
         </Grid>
       </Grid>
@@ -30,4 +30,4 @@ const TagCard: React.FC<Props> = ({ tag }) => {
   );
 };
 
-export default TagCard;
+export default Front;
