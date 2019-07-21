@@ -1,30 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Grid, Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 import { AppState } from '../../../../state/store';
-import { Tag } from '../../../../state/tags/types';
-import TagCard from './TagCard';
+import { Product } from '../../../../state/products/types';
+
+import ProductCard from './ProductCard';
 
 interface StateFromProps {
-  tagsList: Tag[];
+  products: Product[];
 }
 
-const List: React.FC<StateFromProps> = ({ tagsList }) => {
+const List: React.FC<StateFromProps> = ({ products }) => {
   return (
     <Grid container direction="column" spacing={4}>
       <Grid item>
         <Typography variant="h6" style={{ fontFamily: 'Fredoka One' }}>
-          Categorias Cadastradas
+          Produtos cadastrados
         </Typography>
       </Grid>
 
       <Grid item>
         <Grid container spacing={5}>
-          {tagsList.map(tag => {
+          {products.map(product => {
             return (
-              <Grid item key={tag.name} xs={12} md={6}>
-                <TagCard tag={tag} />
+              <Grid item key={product.name} xs={12} md={6}>
+                <ProductCard product={product} />
               </Grid>
             );
           })}
@@ -34,9 +35,9 @@ const List: React.FC<StateFromProps> = ({ tagsList }) => {
   );
 };
 
-const mapStateToProps = (state: AppState): StateFromProps => {
+const mapStateToProps = (state: AppState) => {
   return {
-    tagsList: state.tags.tagsList
+    products: state.products.products
   };
 };
 
