@@ -13,7 +13,7 @@ import { routes } from '../../config/routes';
 
 const Navbar = () => {
   return (
-    <AppBar position="relative">
+    <AppBar position="relative" elevation={2}>
       <Toolbar>
         <Grid container alignItems="baseline">
           <Grid item>
@@ -21,13 +21,16 @@ const Navbar = () => {
               to={routes.index}
               style={{ textDecoration: 'none', color: colors.grey[50] }}
             >
-              <Typography variant="h6" style={{ fontFamily: 'Notable' }}>
+              <Typography
+                variant="h6"
+                style={{ fontFamily: 'Permanent Marker' }}
+              >
                 Home Stock
               </Typography>
             </Link>
           </Grid>
 
-          <Grid item style={{ marginLeft: 80 }}>
+          <Grid item style={{ marginLeft: 80, flex: 1 }}>
             <Grid container alignItems="baseline" spacing={10}>
               <Grid item>
                 <Link to={routes.purchases} style={{ textDecoration: 'none' }}>

@@ -11,7 +11,7 @@ const AddTag = () => {
       <Grid item xs={10} md={8}>
         <Grid container direction="column" spacing={10}>
           <Grid item>
-            <Typography variant="h3" style={{ fontFamily: 'Permanent Marker' }}>
+            <Typography variant="h3" style={{ fontFamily: 'Fredoka One' }}>
               Criando categoria
             </Typography>
 

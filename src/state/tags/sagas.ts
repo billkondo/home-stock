@@ -1,4 +1,4 @@
-import { takeEvery, delay, all, put } from 'redux-saga/effects';
+import { takeLatest, delay, all, put } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 
 import {
@@ -11,9 +11,9 @@ import {
 import { routes } from '../../config/routes';
 
 function* tagsCreateRequest(action: TagsCreateRequestAction) {
-  console.log(action);
-  console.log('tags create request');
   try {
+    if (action.tag.name.length === 0) throw new Error('Teste');
+
     yield put<TagsCreateAction>({
       type: TAGS_CREATE,
       tag: action.tag
@@ -21,13 +21,16 @@ function* tagsCreateRequest(action: TagsCreateRequestAction) {
 
     yield put(push(routes.management('tags')));
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 }
 
 function* watchTagsCreateRequest() {
-  console.log('WATCH ');
-  yield takeEvery(TAGS_CREATE_REQUEST, tagsCreateRequest);
+  try {
+    yield takeLatest(TAGS_CREATE_REQUEST, tagsCreateRequest);
+  } catch (e) {
+    throw e;
+  }
 }
 
 export function* tagsSagas() {

@@ -12,7 +12,7 @@ const AddProduct = () => {
       <Grid item md={8} xs={10}>
         <Grid container direction="column" spacing={10}>
           <Grid item>
-            <Typography variant="h3" style={{ fontFamily: 'Permanent Marker' }}>
+            <Typography variant="h3" style={{ fontFamily: 'Fredoka One' }}>
               Criando produto
             </Typography>
           </Grid>
