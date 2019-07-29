@@ -31,7 +31,6 @@ const reducer = (state: State, action: Action): State => {
 };
 
 const init = (state: State): State => {
-  console.log('INIT');
   return state;
 };
 

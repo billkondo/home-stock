@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { routes } from '../config/routes';
 
-import Create from '../components/management/products/Create';
+import Create from '../components/management/products/create/Create';
 
 const AddProduct = () => {
   return (

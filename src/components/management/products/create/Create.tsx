@@ -1,12 +1,20 @@
 import React, { useReducer } from 'react';
 import { Paper, Grid, TextField, Box, Button } from '@material-ui/core';
 
+import Tags from './tags/Tags';
+
 type State = {
   name: string;
   description: string;
+  isTagsMenuOpen: boolean;
 };
 
-type Action = { type: 'CHANGE_TEXT'; value: string; name: string };
+type Action =
+  | { type: 'CHANGE_TEXT'; value: string; name: string }
+  | {
+      type: 'TOGGLE_MENU';
+      flag: boolean;
+    };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -15,12 +23,22 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         [action.name]: action.value
       };
+
+    case 'TOGGLE_MENU':
+      return {
+        ...state,
+        isTagsMenuOpen: action.flag
+      };
+
+    default:
+      return state;
   }
 };
 
-const initialState = {
+const initialState: State = {
   name: '',
-  description: ''
+  description: '',
+  isTagsMenuOpen: false
 };
 
 const Create = () => {
@@ -34,7 +52,12 @@ const Create = () => {
     });
   };
 
-  console.log(state);
+  const toggleMenu = (flag: boolean) => () => {
+    dispatch({
+      type: 'TOGGLE_MENU',
+      flag
+    });
+  };
 
   return (
     <Paper elevation={8}>
@@ -59,6 +82,14 @@ const Create = () => {
               value={state.description}
               name="description"
               onChange={handleChange}
+            />
+          </Grid>
+
+          <Grid item>
+            <Tags
+              isTagsMenuOpen={state.isTagsMenuOpen}
+              openMenu={toggleMenu(true)}
+              closeMenu={toggleMenu(false)}
             />
           </Grid>
 
