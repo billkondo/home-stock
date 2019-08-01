@@ -13,7 +13,11 @@ import { routes } from '../../config/routes';
 
 const Navbar = () => {
   return (
-    <AppBar position="relative" elevation={2}>
+    <AppBar
+      position="relative"
+      elevation={2}
+      style={{ backgroundColor: colors.red[900] }}
+    >
       <Toolbar>
         <Grid container alignItems="baseline">
           <Grid item>
@@ -22,7 +26,7 @@ const Navbar = () => {
               style={{ textDecoration: 'none', color: colors.grey[50] }}
             >
               <Typography
-                variant="h6"
+                variant="h5"
                 style={{ fontFamily: 'Permanent Marker' }}
               >
                 Home Stock
@@ -35,7 +39,12 @@ const Navbar = () => {
               <Grid item>
                 <Link to={routes.purchases} style={{ textDecoration: 'none' }}>
                   <Button size="small" style={{ color: colors.grey[50] }}>
-                    <Typography variant="body1">Compras</Typography>
+                    <Typography
+                      variant="body1"
+                      style={{ fontFamily: 'Fredoka One' }}
+                    >
+                      Compras
+                    </Typography>
                   </Button>
                 </Link>
               </Grid>
@@ -46,7 +55,12 @@ const Navbar = () => {
                   style={{ textDecoration: 'none' }}
                 >
                   <Button size="small" style={{ color: colors.grey[50] }}>
-                    <Typography variant="body1">Gestão</Typography>
+                    <Typography
+                      variant="body1"
+                      style={{ fontFamily: 'Fredoka One' }}
+                    >
+                      Gestão
+                    </Typography>
                   </Button>
                 </Link>
               </Grid>
