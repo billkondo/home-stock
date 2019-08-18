@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { routes } from '../config/routes';
 
-import Create from '../components/management/products/create/Create';
+import RegisterProduct from 'components/register_product/RegisterProduct';
 
 const AddProduct = () => {
   return (
@@ -18,7 +18,7 @@ const AddProduct = () => {
           </Grid>
 
           <Grid item>
-            <Create />
+            <RegisterProduct />
           </Grid>
 
           <Grid item>

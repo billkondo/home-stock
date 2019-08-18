@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Grid } from '@material-ui/core';
 import { findIndex, isEqual } from 'lodash';
 
+import { Tag } from 'models/tag';
 import TagCard from './TagCard';
+import { SelectTagsContext } from '../context';
 
-import { Tag } from '../../../../../models/tag';
+const TagsList = () => {
+  const context = useContext(SelectTagsContext);
 
-type Props = {
-  tags: Array<Tag>;
-  addTag: (tag: Tag) => void;
-  removeTag: (tag: Tag) => void;
-};
+  const { state, addTag, removeTag } = context;
+  const { tags } = state;
 
-const TagsList: React.FC<Props> = ({ tags, addTag, removeTag }) => {
   const tagsList = [
     {
       name: 'A',
@@ -45,7 +44,7 @@ const TagsList: React.FC<Props> = ({ tags, addTag, removeTag }) => {
   };
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} style={{ margin: 16 }}>
       {tagsList.map(tag => {
         return (
           <Grid item key={tag.name} xs={12} md={6}>

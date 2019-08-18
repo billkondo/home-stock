@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { Add, Close } from '@material-ui/icons';
 
-import { Tag } from '../../../../../models/tag';
+import { Tag } from 'models/tag';
 
 type Props = {
   tag: Tag;
