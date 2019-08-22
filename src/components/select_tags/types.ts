@@ -4,10 +4,11 @@ export type SelectTagsProps = {
   isOpen: boolean;
   close: () => void;
   addTags: (tags: Array<Tag>) => void;
+  registeredTags: Array<Tag>;
 };
 
 export type SelectTagsState = {
-  tags: Array<Tag>;
+  selectedTags: Array<Tag>;
 };
 
 export type SelectTagsActions =

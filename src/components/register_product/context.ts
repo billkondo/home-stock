@@ -8,6 +8,7 @@ interface RegisterProductContextInterface {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   toggleMenu: (flag: boolean) => void;
   addTags: (tags: Array<Tag>) => void;
+  removeTag: (tag: Tag) => void;
 }
 
 export const RegisterProductContext = React.createContext(

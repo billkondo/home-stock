@@ -9,6 +9,10 @@ const Main = () => {
 
   const { state, handleChange } = context;
 
+  const onSubmit = () => {
+    console.log(state);
+  };
+
   return (
     <Paper elevation={8}>
       <Box padding={8}>
@@ -40,7 +44,9 @@ const Main = () => {
           </Grid>
 
           <Grid item container justify="flex-end">
-            <Button variant="outlined">Criar</Button>
+            <Button variant="outlined" onClick={onSubmit}>
+              Criar
+            </Button>
           </Grid>
         </Grid>
       </Box>

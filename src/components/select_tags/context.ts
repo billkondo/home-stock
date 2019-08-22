@@ -11,6 +11,8 @@ interface SelectTagsContextInterface {
   submit: () => void;
   isOpen: boolean;
   close: () => void;
+  tagsOptions: Array<Tag>;
+  registeredTags: Array<Tag>;
 }
 
 export const SelectTagsContext = React.createContext(

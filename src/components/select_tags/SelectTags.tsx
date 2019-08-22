@@ -1,12 +1,24 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import { SelectTagsProvider } from './context';
 import { SelectTagsProps } from './types';
 import Main from './UI/Main';
 import { reducer, initialState } from './state';
 import { Tag } from 'models/tag';
+import { AppState } from 'state/store';
 
-const SelectTags: React.FC<SelectTagsProps> = ({ addTags, close, isOpen }) => {
+type StoreProps = {
+  tags: Array<Tag>;
+};
+
+const SelectTags: React.FC<SelectTagsProps & StoreProps> = ({
+  addTags,
+  close,
+  isOpen,
+  tags,
+  registeredTags
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addTag = (tag: Tag) => {
@@ -30,7 +42,7 @@ const SelectTags: React.FC<SelectTagsProps> = ({ addTags, close, isOpen }) => {
   };
 
   const submit = () => {
-    addTags(state.tags);
+    addTags(state.selectedTags);
     clearTags();
     close();
   };
@@ -44,7 +56,9 @@ const SelectTags: React.FC<SelectTagsProps> = ({ addTags, close, isOpen }) => {
         removeTag,
         submit,
         isOpen,
-        close
+        close,
+        tagsOptions: tags,
+        registeredTags
       }}
     >
       <Main />
@@ -52,4 +66,10 @@ const SelectTags: React.FC<SelectTagsProps> = ({ addTags, close, isOpen }) => {
   );
 };
 
-export default SelectTags;
+const mapStateToProps = (state: AppState) => {
+  return {
+    tags: state.tags.tagsList
+  };
+};
+
+export default connect(mapStateToProps)(SelectTags);

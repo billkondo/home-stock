@@ -1,3 +1,5 @@
+import { isEqual } from 'lodash';
+
 import { RegisterProductActions, RegisterProductState } from './types';
 
 export const reducer = (
@@ -23,6 +25,12 @@ export const reducer = (
         tags: state.tags.concat(...action.tags)
       };
 
+    case 'REMOVE_TAG':
+      return {
+        ...state,
+        tags: state.tags.filter(tag => !isEqual(tag, action.tag))
+      };
+
     default:
       return state;
   }
@@ -32,9 +40,5 @@ export const initialState: RegisterProductState = {
   name: '',
   description: '',
   isTagsMenuOpen: false,
-  tags: [
-    {
-      name: 'Opa'
-    }
-  ]
+  tags: []
 };

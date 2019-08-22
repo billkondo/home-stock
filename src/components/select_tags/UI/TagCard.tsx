@@ -22,7 +22,7 @@ type Props = {
 const TagCard: React.FC<Props> = ({ tag, selected, addTag, removeTag }) => {
   return (
     <Box position="relative">
-      <Card elevation={2}>
+      <Card elevation={4}>
         <Grid container direction="column" style={{ height: 200 }}>
           <Grid item style={{ padding: 16 }}>
             <InputBase
@@ -42,8 +42,8 @@ const TagCard: React.FC<Props> = ({ tag, selected, addTag, removeTag }) => {
               alignItems="center"
               style={{
                 backgroundColor: selected
-                  ? colors.green[300]
-                  : colors.blueGrey[300],
+                  ? colors.green[900]
+                  : colors.blueGrey[900],
                 padding: 8,
                 opacity: 0.7,
                 borderRadius: 4

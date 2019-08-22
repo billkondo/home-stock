@@ -30,13 +30,21 @@ const RegisterProduct = () => {
     });
   };
 
+  const removeTag = (tag: Tag) => {
+    dispatch({
+      type: 'REMOVE_TAG',
+      tag
+    });
+  };
+
   return (
     <RegisterProductProvider
       value={{
         state,
         handleChange,
         toggleMenu,
-        addTags
+        addTags,
+        removeTag
       }}
     >
       <RegisterProductUI />

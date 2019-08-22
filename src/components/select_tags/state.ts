@@ -7,17 +7,22 @@ export const reducer = (
   switch (action.type) {
     case 'ADD_TAG':
       return {
-        tags: state.tags.concat(action.tag)
+        ...state,
+        selectedTags: state.selectedTags.concat(action.tag)
       };
 
     case 'REMOVE_TAG':
       return {
-        tags: state.tags.filter(tag => action.tag.name !== tag.name)
+        ...state,
+        selectedTags: state.selectedTags.filter(
+          tag => action.tag.name !== tag.name
+        )
       };
 
     case 'CLEAR_TAGS':
       return {
-        tags: []
+        ...state,
+        selectedTags: []
       };
 
     default:
@@ -26,5 +31,5 @@ export const reducer = (
 };
 
 export const initialState: SelectTagsState = {
-  tags: []
+  selectedTags: []
 };

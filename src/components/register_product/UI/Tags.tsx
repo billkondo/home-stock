@@ -18,7 +18,12 @@ const Tags = () => {
 
   return (
     <Grid container direction="column">
-      <SelectTags close={closeMenu} isOpen={isTagsMenuOpen} addTags={addTags} />
+      <SelectTags
+        close={closeMenu}
+        isOpen={isTagsMenuOpen}
+        addTags={addTags}
+        registeredTags={tags}
+      />
 
       <Grid item container spacing={4} alignItems="center">
         <Grid item>

@@ -13,4 +13,5 @@ export type RegisterProductActions =
       type: 'TOGGLE_MENU';
       flag: boolean;
     }
-  | { type: 'ADD_TAGS'; tags: Array<Tag> };
+  | { type: 'ADD_TAGS'; tags: Array<Tag> }
+  | { type: 'REMOVE_TAG'; tag: Tag };

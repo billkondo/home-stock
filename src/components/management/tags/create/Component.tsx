@@ -176,7 +176,7 @@ const Create: React.FC<Props> = ({ tagsCreateRequest }) => {
           </Grid>
 
           <Grid item container justify="flex-end">
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button variant="outlined" onClick={handleSubmit}>
               Criar
             </Button>
           </Grid>

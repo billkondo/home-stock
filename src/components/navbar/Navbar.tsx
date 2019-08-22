@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <AppBar
       position="relative"
-      elevation={2}
+      elevation={10}
       style={{ backgroundColor: colors.red[900] }}
     >
       <Toolbar>
