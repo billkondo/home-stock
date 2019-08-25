@@ -6,6 +6,7 @@ import { createBrowserHistory } from 'history';
 // Reducers
 import { tagsReducer } from './tags/reducer';
 import { productsReducer } from './products/reducer';
+import { loginReducer } from './auth/reducer';
 
 // Sagas
 import { rootSaga } from './rootSaga';
@@ -15,7 +16,8 @@ export const history = createBrowserHistory();
 const rootReducer = combineReducers({
   tags: tagsReducer,
   router: connectRouter(history),
-  products: productsReducer
+  products: productsReducer,
+  auth: loginReducer
 });
 
 const sagaMiddleWare = createSagaMiddleware();

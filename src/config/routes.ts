@@ -6,5 +6,6 @@ export const routes = {
   purchases: '/purchases',
   my_products: '/my_products',
   management: (tab: ManagementTabType = ':tab') => `/management/${tab}`,
-  add_tag: '/add_tag'
+  add_tag: '/add_tag',
+  login: '/login'
 };

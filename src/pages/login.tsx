@@ -1,16 +1,16 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 
-import Home from 'components/home/Home';
+import Login from 'components/login/Login';
 
-const Index = () => {
+const LoginPage = () => {
   return (
     <Grid container justify="center">
-      <Grid item xs={10} md={8}>
-        <Home />
+      <Grid item xs={12} md={10}>
+        <Login />
       </Grid>
     </Grid>
   );
 };
 
-export default Index;
+export default LoginPage;

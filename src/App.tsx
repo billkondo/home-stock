@@ -4,14 +4,15 @@ import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
-import Navbar from './components/navbar/Navbar';
-import Index from './pages/index';
-import AddProduct from './pages/add_product';
-import Management from './pages/management';
-import AddTag from './pages/add_tag';
+import Navbar from 'components/navbar/Navbar';
+import Index from 'pages/index';
+import AddProduct from 'pages/add_product';
+import Management from 'pages/management';
+import AddTag from 'pages/add_tag';
+import Login from 'pages/login';
 
-import { routes } from './config/routes';
-import { store, history } from './state/store';
+import { routes } from 'config/routes';
+import { store, history } from 'state/store';
 
 const App: React.FC = () => {
   return (
@@ -25,7 +26,7 @@ const App: React.FC = () => {
               <Navbar />
             </Grid>
 
-            <Box marginTop={5}>
+            <Box marginTop={8}>
               <Grid item>
                 <Route path={routes.index} exact component={Index} />
                 <Route path={routes.add_product} exact component={AddProduct} />
@@ -35,6 +36,7 @@ const App: React.FC = () => {
                   component={Management}
                 />
                 <Route path={routes.add_tag} exact component={AddTag} />
+                <Route path={routes.login} exact component={Login} />
               </Grid>
             </Box>
           </Grid>

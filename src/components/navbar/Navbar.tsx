@@ -1,75 +1,28 @@
 import React from 'react';
-import {
-  AppBar,
-  Grid,
-  Typography,
-  Toolbar,
-  Button,
-  colors
-} from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { routes } from '../../config/routes';
+import NavbarUI from './UI/Main';
+import { AppState } from 'state/store';
+import { NavbarProvider } from './context';
 
-const Navbar = () => {
+type LoginState = {
+  isLogged: boolean;
+};
+
+type Props = LoginState;
+
+const Navbar: React.FC<Props> = ({ isLogged }) => {
   return (
-    <AppBar
-      position="relative"
-      elevation={10}
-      style={{ backgroundColor: colors.red[900] }}
-    >
-      <Toolbar>
-        <Grid container alignItems="baseline">
-          <Grid item>
-            <Link
-              to={routes.index}
-              style={{ textDecoration: 'none', color: colors.grey[50] }}
-            >
-              <Typography
-                variant="h5"
-                style={{ fontFamily: 'Permanent Marker' }}
-              >
-                Home Stock
-              </Typography>
-            </Link>
-          </Grid>
-
-          <Grid item style={{ marginLeft: 80, flex: 1 }}>
-            <Grid container alignItems="baseline" spacing={10}>
-              <Grid item>
-                <Link to={routes.purchases} style={{ textDecoration: 'none' }}>
-                  <Button size="small" style={{ color: colors.grey[50] }}>
-                    <Typography
-                      variant="body1"
-                      style={{ fontFamily: 'Fredoka One' }}
-                    >
-                      Compras
-                    </Typography>
-                  </Button>
-                </Link>
-              </Grid>
-
-              <Grid item>
-                <Link
-                  to={routes.management('products')}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <Button size="small" style={{ color: colors.grey[50] }}>
-                    <Typography
-                      variant="body1"
-                      style={{ fontFamily: 'Fredoka One' }}
-                    >
-                      Gestão
-                    </Typography>
-                  </Button>
-                </Link>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
+    <NavbarProvider value={{ isLogged }}>
+      <NavbarUI />
+    </NavbarProvider>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state: AppState): LoginState => {
+  return {
+    isLogged: state.auth.isLogged
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);
