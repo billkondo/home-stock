@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
-import { Grid } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { HomeProvider } from './context';
 import { reducer, initialState } from './state';
@@ -7,7 +8,16 @@ import { ChangeTextAction } from './actions';
 
 import HomeUI from './UI/Main';
 
-const Home = () => {
+import { signUpRequestAction } from 'state/auth/actions';
+import { SignUpFormType } from 'models/sign_up';
+import { AppState } from 'state/store';
+
+type Props = {
+  emitSignUpRequest: (form: SignUpFormType) => void;
+  isLogged: boolean;
+};
+
+const Home: React.FC<Props> = ({ emitSignUpRequest, isLogged }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { form } = state;
@@ -17,7 +27,7 @@ const Home = () => {
   };
 
   const createUser = () => {
-    console.log(form);
+    emitSignUpRequest(form);
   };
 
   return (
@@ -25,7 +35,8 @@ const Home = () => {
       value={{
         form,
         changeText: onChangeText,
-        createUser
+        createUser,
+        isLogged
       }}
     >
       <HomeUI />
@@ -33,4 +44,20 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state: AppState) => {
+  return {
+    isLogged: state.auth.isLogged
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    emitSignUpRequest: (form: SignUpFormType) =>
+      dispatch(signUpRequestAction(form))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

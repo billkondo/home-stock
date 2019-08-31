@@ -1,9 +1,6 @@
-export type SignUpFormState = {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-};
+import { SignUpFormType } from 'models/sign_up';
+
+export type SignUpFormState = SignUpFormType;
 
 export type HomeStateType = {
   form: SignUpFormState;

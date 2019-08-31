@@ -16,7 +16,7 @@ const Welcome = () => {
 
       <Grid item>
         <Typography variant="body1" align="center">
-          Liste suas compras de forma fácil e rápida.
+          Liste suas compras de forma fácil e rápida
         </Typography>
       </Grid>
     </Grid>
