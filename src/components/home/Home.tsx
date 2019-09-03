@@ -11,13 +11,19 @@ import HomeUI from './UI/Main';
 import { signUpRequestAction } from 'state/auth/actions';
 import { SignUpFormType } from 'models/sign_up';
 import { AppState } from 'state/store';
+import { ComponentContextType } from 'models/component_context';
 
 type Props = {
   emitSignUpRequest: (form: SignUpFormType) => void;
   isLogged: boolean;
+  SignUpContext: ComponentContextType;
 };
 
-const Home: React.FC<Props> = ({ emitSignUpRequest, isLogged }) => {
+const Home: React.FC<Props> = ({
+  emitSignUpRequest,
+  isLogged,
+  SignUpContext
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { form } = state;
@@ -36,7 +42,8 @@ const Home: React.FC<Props> = ({ emitSignUpRequest, isLogged }) => {
         form,
         changeText: onChangeText,
         createUser,
-        isLogged
+        isLogged,
+        SignUpContext
       }}
     >
       <HomeUI />
@@ -46,7 +53,8 @@ const Home: React.FC<Props> = ({ emitSignUpRequest, isLogged }) => {
 
 const mapStateToProps = (state: AppState) => {
   return {
-    isLogged: state.auth.isLogged
+    isLogged: state.auth.isLogged,
+    SignUpContext: state.componentContext.signUp
   };
 };
 

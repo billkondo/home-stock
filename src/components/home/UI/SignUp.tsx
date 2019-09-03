@@ -1,19 +1,23 @@
 import React, { useContext } from 'react';
-import {
-  Grid,
-  Card,
-  Typography,
-  TextField,
-  Button,
-  colors
-} from '@material-ui/core';
+import { Grid, Card, Typography, Button, colors } from '@material-ui/core';
 
 import { HomeContext } from '../context';
+import { ErrorType } from 'models/error';
+import { SignUpFormLabels } from 'models/sign_up';
+import TextField from 'components/custom_textfield/CustomTextfield';
 
 const SignUp = () => {
   const context = useContext(HomeContext);
 
-  const { form, changeText, createUser } = context;
+  const { form, changeText, createUser, SignUpContext } = context;
+
+  const { status, error } = SignUpContext;
+
+  const isWrong = (field: string, error?: ErrorType): boolean =>
+    !!error && error.type === 'VALIDATION' && !!error.messages[field];
+
+  const extractErrorMessage = (field: string, error?: ErrorType): string =>
+    !!error && error.type === 'VALIDATION' ? error.messages[field] : '';
 
   return (
     <Card elevation={2}>
@@ -26,47 +30,48 @@ const SignUp = () => {
 
         <Grid item>
           <TextField
-            variant="outlined"
-            fullWidth
-            label="Nome"
+            changeText={changeText}
+            label={'Nome'}
+            name={SignUpFormLabels.name}
             value={form.name}
-            onChange={changeText}
-            name="name"
+            error={isWrong(SignUpFormLabels.name, error)}
+            errorMessage={extractErrorMessage(SignUpFormLabels.name, error)}
           />
         </Grid>
 
         <Grid item>
           <TextField
-            variant="outlined"
-            fullWidth
-            label="Email"
+            changeText={changeText}
+            label={'Email'}
+            name={SignUpFormLabels.email}
             value={form.email}
-            onChange={changeText}
-            name="email"
+            error={isWrong(SignUpFormLabels.email, error)}
+            errorMessage={extractErrorMessage(SignUpFormLabels.email, error)}
           />
         </Grid>
 
         <Grid item>
           <TextField
-            variant="outlined"
-            fullWidth
-            label="Senha"
-            type="password"
+            label={'Senha'}
             value={form.password}
-            onChange={changeText}
-            name="password"
+            changeText={changeText}
+            name={SignUpFormLabels.password}
+            error={isWrong(SignUpFormLabels.password, error)}
+            errorMessage={extractErrorMessage(SignUpFormLabels.password, error)}
           />
         </Grid>
 
         <Grid item>
           <TextField
-            variant="outlined"
-            fullWidth
-            label="Confirme Senha"
+            label={'Confirme Senha'}
             value={form.passwordConfirmation}
-            onChange={changeText}
-            name="passwordConfirmation"
-            type="password"
+            changeText={changeText}
+            name={SignUpFormLabels.passwordConfirmation}
+            error={isWrong(SignUpFormLabels.passwordConfirmation, error)}
+            errorMessage={extractErrorMessage(
+              SignUpFormLabels.passwordConfirmation,
+              error
+            )}
           />
         </Grid>
 

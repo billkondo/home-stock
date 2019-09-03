@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history';
 import { tagsReducer } from './tags/reducer';
 import { productsReducer } from './products/reducer';
 import { loginReducer } from './auth/reducer';
+import { componentContextReducer } from './component_context/reducer';
 
 // Sagas
 import { rootSaga } from './rootSaga';
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   tags: tagsReducer,
   router: connectRouter(history),
   products: productsReducer,
-  auth: loginReducer
+  auth: loginReducer,
+  componentContext: componentContextReducer
 });
 
 const sagaMiddleWare = createSagaMiddleware();
